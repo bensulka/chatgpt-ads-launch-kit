@@ -1,0 +1,30 @@
+{
+  "name": "sulka-labs-chatgpt",
+  "owner": {
+    "name": "Sulka Labs",
+    "url": "https://sulkalabs.com"
+  },
+  "metadata": {
+    "description": "The free ChatGPT Ads Launch Kit from Sulka Labs, a human-led, AI-driven DTC growth partner.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "chatgpt-ads-launch-kit",
+      "source": "./plugins/chatgpt-ads-launch-kit",
+      "description": "Build a launch-ready ChatGPT Ads campaign for any brand: ad groups, Version A/B ad copy, context hints, UTM tracking, and a launch spreadsheet. No API keys, no code.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Sulka Labs"
+      },
+      "keywords": [
+        "chatgpt ads",
+        "paid media",
+        "ppc",
+        "ecommerce",
+        "advertising",
+        "openai"
+      ]
+    }
+  ]
+}
