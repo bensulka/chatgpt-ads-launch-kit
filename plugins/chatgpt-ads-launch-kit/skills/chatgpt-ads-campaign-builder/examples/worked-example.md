@@ -2,119 +2,161 @@
 
 A neutral example so the expected output shape is concrete. Do not reuse this copy for a real brand. It is here to show structure, not to be copied.
 
-## The inputs the user gave
+## The inputs given
 
-- Brand: Summit Trail Coffee, a small-batch coffee roaster
-- What to advertise: the whole brand, driving to the homepage
-- Ideal customer: home coffee drinkers who care about freshness and origin, tired of stale grocery-store beans
-- Goal: traffic and awareness
-- Destination URL (base): https://summittrailcoffee.com
+- Brand: Northbound Supply Co, a DTC brand selling camping and hiking gear
+- What to advertise: the Ridgeline 45L hiking backpack, $189
+- Ideal customer: weekend hikers and backpackers, ages 25 to 45, active outdoor lifestyle, has bought gear from REI or Patagonia before
+- Goal: drive purchases on the Ridgeline 45L product page
+- Destination URL (base): https://northboundsupply.com/ridgeline-45l
+- Creative direction: outdoor lifestyle and product photography, earthy tones, no cartoon or illustration style
 
 ## Step 1 to 2: Structure
 
 Single ad group for a first test.
 
 ```
-Ad Group Name: General - Home Page - V1
-Objective: Clicks (CPC)
-Budget: $500 total, Daily - about $17/day
-Campaign Name: Launch Test - Clicks - 6/20/26
+Campaign: northbound0716 | Budget: $17/day, Daily | Launch 7/16, no end date
+Objective: Views | Countries: US
+Ad Group Name: northbound0716gen | Max bid: $12 CPM
 ```
 
-## Step 3: Version A options presented in chat (user picks one)
+## Step 3: Title/copy options presented in chat (user picks)
 
 ```
 Option 1
-  Headline: Coffee Roasted the Week You Order (33 chars)
-  Description: Small-batch beans shipped fresh, never sitting on a shelf. Taste the difference. (79 chars)
+  Title: Ridgeline 45L Pack (18 chars)
+  Copy: Weatherproof pack built for 3 day trips. (40 chars)
 
 Option 2
-  Headline: Ditch the Stale Grocery Beans (29 chars)
-  Description: Freshly roasted, single-origin coffee delivered days after roasting, not months. (80 chars)
+  Title: Built for the Trail (19 chars)
+  Copy: Recycled nylon. Lifetime warranty. $189. (40 chars)
 
 Option 3
-  Headline: Fresh Coffee, Roasted to Order (30 chars)
-  Description: Single-origin small batches, shipped within days of roasting for peak flavor. (77 chars)
+  Title: Hike Farther, Carry Less (24 chars)
+  Copy: Free shipping over $75. Ships in 2 days. (40 chars)
 
 Option 4
-  Headline: Better Coffee Starts With Freshness (35 chars)
-  Description: Small-batch beans roasted the week you order and shipped straight to your door. (78 chars)
+  Title: Northbound Ridgeline (20 chars)
+  Copy: Weatherproof. Lifetime warranty. $189. (38 chars)
 ```
 
-User picks Option 2.
+User picks Options 1 and 3, running them as two separate ads in the same ad group.
 
-## Step 4: Version B, the truncation-safe short version
+## Step 4: Destination URLs
 
 ```
-Version B
-  Headline: Fresh-Roasted Coffee (20 chars)
-  Description: Roasted to order. Never stale. (30 chars)
+Ad 1: https://northboundsupply.com/ridgeline-45l?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GenA
+Ad 2: https://northboundsupply.com/ridgeline-45l?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GenB
 ```
 
 ## Step 5: Context hints (20 to 30)
 
 ```
-fresh roasted coffee
-single origin coffee beans
-best coffee subscription
-how to buy fresh coffee beans
-my grocery store coffee tastes stale
-where to get freshly roasted coffee
-small batch coffee roaster
-coffee delivered fresh
-best beans for pour over
-what makes coffee taste fresh
-how long do coffee beans stay fresh
-good coffee for home brewing
-specialty coffee online
-coffee that ships right after roasting
-recommend a coffee roaster
-best whole bean coffee
-freshly roasted coffee delivery
-upgrade my morning coffee
-direct from roaster coffee
-where do baristas buy coffee beans
+hiking backpack
+weatherproof hiking backpack
+best backpack for a 3 day hike
+backpack with lifetime warranty
+recycled nylon backpack
+hiking gear for weekend trips
+best daypack for backpacking
+durable hiking backpack
+REI alternative backpack
+Patagonia alternative backpack
+eco friendly hiking gear
+hiking backpack under $200
+best backpack for weekend hikers
+hiking pack with rain cover
+hiking backpack for beginners
+what to look for in a hiking backpack
 ```
 
-## Step 6: Destination URLs
+## Step 6: Generate and host the creative
+
+Reference image prompt (generate this one first, so both ad creatives stay visually consistent):
 
 ```
-Version A: https://summittrailcoffee.com?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GeneralV-A
-Version B: https://summittrailcoffee.com?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GeneralV-B
+Create a photorealistic product photo of a hiking backpack called the Ridgeline 45L.
+
+Product details: a 45 liter internal-frame hiking backpack, moss green body with rust
+orange accent straps and zipper pulls, recycled ripstop nylon fabric with a visible
+subtle woven texture, adjustable shoulder straps and a padded hip belt, a top lid
+pocket, side compression straps, and a front bungee mesh pocket.
+
+Framing: full backpack in frame, front three-quarter angle, standing upright as if on
+an invisible mannequin or stand, no person wearing it.
+
+Background: plain seamless studio backdrop, light gray, no props, no text, no logos,
+no badges.
+
+Lighting: soft, even studio lighting, minimal shadow, true-to-life color.
+
+Style: high-detail commercial product photography, sharp focus on fabric texture and
+hardware, no illustration or 3D-render look.
+
+Square (1:1) composition.
 ```
+
+Ad 1 creative prompt:
+
+```
+Create a square (1:1) product ad image for Northbound Supply Co, a DTC brand selling
+the Ridgeline 45L hiking backpack, priced at $189. Match the backpack's color, texture,
+and hardware to the attached reference image.
+
+Scene: the backpack sitting on a rocky mountain trail at golden hour, weatherproof
+recycled ripstop nylon texture visible, no people in frame.
+
+Include a small badge or corner callout with the text "Free shipping over $75."
+
+Style: clean outdoor product photography, natural light, no stock photo feel, no
+cartoon or illustration style, earthy outdoorsy colors (moss green, rust orange,
+warm gray).
+
+Keep the composition simple enough to work as a paid ad creative, plenty of negative
+space in one corner for a headline overlay.
+```
+
+Both images get hosted somewhere with a public link (Google Drive with sharing turned on, Imgur, Dropbox, a site's own media library), giving two `image_link` URLs.
 
 ## Step 7: The JSON fed to the sheet builder
 
 ```json
 {
-  "brand": "Summit Trail Coffee",
-  "phase": "Phase 1",
   "campaign": {
-    "name": "Launch Test - Clicks - 6/20/26",
-    "budget": "$500",
-    "budget_type": "Daily - about $17/day",
-    "objective": "Clicks",
-    "destination_url": "https://summittrailcoffee.com"
+    "campaign_name": "northbound0716",
+    "budget_max": 17,
+    "budget_type": "Daily",
+    "launch_date": "2026-07-16",
+    "end_date": "",
+    "objective": "Views",
+    "target_countries": ["US"]
   },
-  "ad_groups": [
+  "adgroups": [
     {
-      "name": "General - Home Page - V1",
-      "destination_urls": [
-        "https://summittrailcoffee.com?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GeneralV-A",
-        "https://summittrailcoffee.com?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GeneralV-B"
-      ],
-      "versions": [
-        {"label": "Version A (Long)", "headline": "Ditch the Stale Grocery Beans", "description": "Freshly roasted, single-origin coffee delivered days after roasting, not months."},
-        {"label": "Version B (Short)", "headline": "Fresh-Roasted Coffee", "description": "Roasted to order. Never stale."}
-      ],
+      "adgroup_name": "northbound0716gen",
+      "max_bid": 12,
       "context_hints": [
-        "fresh roasted coffee",
-        "single origin coffee beans",
-        "best coffee subscription",
-        "my grocery store coffee tastes stale",
-        "where to get freshly roasted coffee",
-        "small batch coffee roaster",
-        "coffee delivered fresh"
+        "hiking backpack",
+        "weatherproof hiking backpack",
+        "best backpack for a 3 day hike",
+        "backpack with lifetime warranty",
+        "recycled nylon backpack",
+        "REI alternative backpack"
+      ],
+      "ads": [
+        {
+          "title": "Ridgeline 45L Pack",
+          "copy": "Weatherproof pack built for 3 day trips.",
+          "link": "https://northboundsupply.com/ridgeline-45l?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GenA",
+          "image_link": "https://drive.google.com/uc?export=view&id=EXAMPLE_FILE_ID_1"
+        },
+        {
+          "title": "Hike Farther, Carry Less",
+          "copy": "Free shipping over $75. Ships in 2 days.",
+          "link": "https://northboundsupply.com/ridgeline-45l?utm_source=openai&utm_medium=cpc&utm_campaign=ChatGPTAdsTest&utm_content=GenB",
+          "image_link": "https://drive.google.com/uc?export=view&id=EXAMPLE_FILE_ID_2"
+        }
       ]
     }
   ]
@@ -123,7 +165,7 @@ Version B: https://summittrailcoffee.com?utm_source=openai&utm_medium=cpc&utm_ca
 
 Run:
 ```bash
-python scripts/build_campaign_sheet.py campaign.json "Summit Trail Coffee ChatGPT Ads Campaign Launch.xlsx"
+python scripts/build_bulk_upload_sheet.py campaign.json "Northbound Supply Co ChatGPT Ads Bulk Upload.xlsx"
 ```
 
-Result: a three-tab workbook (Campaign, Ad Copy, Context Hints) ready to load into the platform.
+Result: a three-tab workbook (`campaigns`, `adgroups`, `ads`) matching ChatGPT Ads' own bulk upload template exactly, ready to drag into the platform's bulk upload tool.
