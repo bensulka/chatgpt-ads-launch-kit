@@ -1,7 +1,7 @@
 {
   "name": "chatgpt-ads-launch-kit",
-  "version": "0.1.0",
-  "description": "Build a launch-ready ChatGPT Ads campaign for any brand: ad groups, Version A/B ad copy, context hints, UTM tracking, and a launch spreadsheet. Built by Sulka Labs.",
+  "version": "0.2.0",
+  "description": "Build a launch-ready ChatGPT Ads campaign for any brand: ad groups, ad copy, context hints, UTM tracking, ad creative, and a bulk-upload workbook that matches ChatGPT Ads' own template so it drops straight into the platform. Built by Sulka Labs.",
   "author": {
     "name": "Sulka Labs"
   },
@@ -13,6 +13,7 @@
     "ppc",
     "ecommerce",
     "advertising",
-    "openai"
+    "openai",
+    "bulk upload"
   ]
 }
