@@ -4,14 +4,14 @@ This reference holds the copy specs, voice approach, and prompt structure for wr
 
 ## Character Specs
 
-| Field | Limit |
-|---|---|
-| **Title** | up to 24 characters, title case |
-| **Copy** | up to 48 characters, sentence case |
+| Field | Recommended | Hard max |
+|---|---|---|
+| **Title** | 16-24 characters, title case | 50 |
+| **Copy** | 32-48 characters, sentence case | 100 |
 
-This is a hard platform cap on the bulk upload template, confirmed directly from ChatGPT Ads' own workbook, not a style choice. Always print the character count in parentheses after each field, e.g. `Title: Get the Right Part Fast (24 chars)`.
+The recommended range is what reads best in-line with a chat response, confirmed against ChatGPT Ads' own bulk upload schema checklist. Going past it isn't a rejected file, just a weaker ad, so write to the recommended range by default. Always print the character count in parentheses after each field, e.g. `Title: Get the Right Part Fast (24 chars)`.
 
-Some ad platforms use a long and short version of the same line (a full headline plus a truncation-safe backup). ChatGPT Ads doesn't work that way, there's only one length. Write straight to the 24/48 caps instead of drafting long and cutting down.
+Some ad platforms use a long and short version of the same line (a full headline plus a truncation-safe backup). ChatGPT Ads doesn't work that way, there's only one length. Write straight to the recommended range instead of drafting long and cutting down.
 
 **Multiple ads in the same ad group should be different angles, not different lengths.** There's no "safe fallback" format on this platform, so a second ad in an ad group exists to test a different hook, not to be a shorter backup of the first.
 
@@ -19,11 +19,24 @@ Some ad platforms use a long and short version of the same line (a full headline
 
 ChatGPT Ads show up inside a conversation where the user is already in a problem-solving mindset. Copy that reads like a genuinely helpful answer outperforms hard-sell ad-speak.
 
+**Write as a senior direct-response copywriter, not a brand marketer.** Assume the reader is skeptical and has already scrolled past a hundred ads today. Every claim needs a receipt, a number, a name, a comparison, a guarantee, not a bare adjective. "Weatherproof" is a claim. "Keeps gear dry through a 4-hour downpour" is a receipt. If the only available detail really is generic, say so in your own reasoning rather than dressing it up, then lean harder on a different angle that does have a real detail behind it.
+
 - Conversational and natural, not corporate.
 - Lead with the benefit or the problem you solve, not the brand name.
-- Be concrete. Specifics and trust signals do the heavy lifting, and at 48 characters there's no room for a wasted word.
+- Be concrete. Specifics and trust signals do the heavy lifting, and at this length there's no room for a wasted word.
 - Match the brand's own voice. If brand guidelines or approved copy exist, draw from that language. Don't invent claims that haven't been confirmed.
 - Skip em dashes. Use periods or commas, they read more natural in this short a space anyway.
+
+### Sourcing the ammunition (do this before drafting a single line)
+
+Generic copy happens when a model starts writing before it has anything specific to say. Before drafting, pull out, in one line each:
+
+1. **The sharpest proof point available** — a number, material, test, or guarantee. Not "durable," but what makes it durable (stitching count, fabric name, a stated test condition).
+2. **The #1 objection a buyer has** — price, durability doubt, "is this actually different," shipping time, whatever it is for this category.
+3. **What the best alternative gets wrong** — the gap this product fills that a named or implied competitor doesn't. If the user hasn't given competitor detail, use the category's default option (e.g. "the mall backpack," "the big-box version") as the foil.
+4. **One weirdly specific, non-generic detail** — something oddly precise enough that no competitor could casually claim it. Pulled from real customer language (reviews, testimonials, site copy) if the brand is real and that's available; reasoned from the actual inputs given if it's a demo or fictional brand.
+
+If research tools are available and the brand is real, use them to pull actual review language, testimonials, or competitor positioning before this step, real customer phrasing beats invented phrasing every time. If not, still do this step from whatever inputs were given, don't skip it because there's no live research access.
 
 ### Choosing the angle
 
@@ -33,8 +46,12 @@ Lead with whatever best matches the buyer's intent for this brand and audience. 
 - Selection or quality
 - Price or value
 - Speed or convenience
+- Proof / specificity (a hard number or guarantee stands in for the whole pitch)
+- Objection-handling (name the hesitation and answer it directly)
 
 For pure awareness brands (especially retail brands with no e-commerce checkout, like a CPG product driving people to stores), the angle is usually the product's distinctive hook and the benefit, not a "buy now" push.
+
+**Every option in a set must come from a different angle bucket.** If two of the five combos are both restating price/warranty in different word order, that's one angle twice, not two angles. Cut the weaker one and write a real replacement from an angle bucket nothing else is using yet.
 
 ## Copywriting Prompt Structure
 
@@ -50,11 +67,11 @@ Before writing, be clear on:
 2. The key message or hook to lead with for this audience
 3. The action the reader should take
 
-Then produce, per ad:
-- **Title:** up to 24 characters, title case
-- **Copy:** up to 48 characters, sentence case
+Then, after running the ammunition step above, produce, per ad:
+- **Title:** 16-24 characters recommended, title case
+- **Copy:** 32-48 characters recommended, sentence case
 
-On the first pass, give 4 to 5 title/copy combos so a direction can be picked at a glance. If two angles need testing in the same ad group, treat each as its own full ad, not a long/short pair of the same idea.
+On the first pass, give 4 to 5 title/copy combos, each from a different angle bucket, so a real direction can be picked at a glance, not five versions of the same idea. If two angles need testing in the same ad group, treat each as its own full ad, not a long/short pair of the same idea.
 
 ## Context Hints Prompt Structure
 
@@ -73,15 +90,15 @@ Keep them tightly relevant to the brand and offer. Generic hints that match unre
 This is the established format, shown so the structure is concrete.
 
 ```
-Ad Group Name: northbound0716gen
+Ad Group Name: RidgelineBackpackBid12V1
 
 Ad 1
-  Title: Ridgeline 45L Pack (18 chars)
-  Copy: Weatherproof pack built for 3 day trips. (40 chars)
-
-Ad 2
   Title: Hike Farther, Carry Less (24 chars)
   Copy: Free shipping over $75. Ships in 2 days. (40 chars)
+
+Ad 2
+  Title: The Last Pack You'll Buy (24 chars)
+  Copy: Lifetime warranty. 45L capacity. $189. (38 chars)
 
 Context Hints (sample):
 hiking backpack
