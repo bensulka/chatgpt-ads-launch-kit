@@ -84,14 +84,16 @@ Each ad in an ad group gets its own `link`, differing only in `utm_content`.
 
 Read `references/copywriting-guide.md` for the full voice approach and prompt structure. The short version:
 
+- **Before drafting a single line, run the ammunition step.** Name the sharpest proof point, the #1 buyer objection, what the best alternative gets wrong, and one weirdly specific detail. Generic copy is what happens when this step gets skipped, don't skip it, including for demo or fictional brands.
+- **Write as a skeptical, specificity-obsessed direct-response copywriter**, not a brand marketer. Every claim needs a receipt, a number, a name, a comparison, a guarantee, not a bare adjective.
+- **Each of the 4-5 combos must come from a different angle bucket** (problem, differentiation, quality, price, speed, proof, objection-handling). Two options that both restate price and warranty in different word order is one angle twice, not two angles, cut the weaker one and replace it.
 - **One format, not two.** Titles run 16 to 24 characters recommended (50 hard max), copy runs 32 to 48 characters recommended (100 hard max), per OpenAI's own bulk upload schema checklist. Write to the recommended range by default, it reads best in-line with a chat response, going past it isn't a rejected file, just a weaker ad.
 - Always show the character count in parentheses after each field so it's easy to verify at a glance.
-- Write conversationally. These ads appear inside a chat where someone is already problem-solving, so copy that sounds like a helpful answer beats hard-sell ad-speak.
 - Match the brand's own voice. If approved copy or brand guidelines exist, draw from that language instead of inventing claims.
 - Skip em dashes, they read a little stiff for how conversational this copy needs to be. Use periods or commas instead.
-- **Multiple ads in one ad group should be different angles, not different lengths.** There is no "safe fallback" format on this platform the way there is on Meta. Two ads under the same ad group are two different hooks, each fitting the same 24/48 caps.
+- **Multiple ads in one ad group should be different angles, not different lengths.** There is no "safe fallback" format on this platform the way there is on Meta. Two ads under the same ad group are two different hooks, each fitting the same recommended range.
 
-On the first pass, give **4 to 5 title/copy combos** to choose from. Pick just one to launch with, or pick two to run as separate ads testing different angles.
+On the first pass, give **4 to 5 title/copy combos** to choose from, each from a different angle bucket. Pick just one to launch with, or pick two to run as separate ads testing different angles.
 
 ## Step 5: Write Context Hints
 
