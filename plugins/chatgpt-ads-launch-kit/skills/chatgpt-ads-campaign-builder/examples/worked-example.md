@@ -16,10 +16,14 @@ A neutral example so the expected output shape is concrete. Do not reuse this co
 Single ad group for a first test.
 
 ```
-Campaign: northbound0716 | Budget: $17/day, Daily | Launch 7/16, no end date
+Campaign: RidgelineBackpackViews071626 | Budget: $30/day, Daily | Launch 7/16, no end date
 Objective: Views | Countries: US
-Ad Group Name: northbound0716gen | Max bid: $12 CPM
+Ad Group Name: RidgelineBackpackBid12V1 | Max bid: $12 CPM
 ```
+
+Naming convention shown here: Product/Category + Objective + Date (`MMDDYY`) for the campaign, Product/Category + Bid + Creative Version for the ad group, each segment capitalized and run together since punctuation isn't allowed. Adjust the segments to whatever naming convention is actually wanted, this is just one way to do it.
+
+Budget is $30/day, not a round test number like $10 or $17. ChatGPT Ads enforces a confirmed $25/day minimum on Daily budgets (`CampaignDailyBudgetMinimumValidationError` if under that), so anything below $25 will fail at upload.
 
 ## Step 3: Title/copy options presented in chat (user picks)
 
@@ -124,8 +128,8 @@ Both images get hosted somewhere with a public link (Google Drive with sharing t
 ```json
 {
   "campaign": {
-    "campaign_name": "northbound0716",
-    "budget_max": 17,
+    "campaign_name": "RidgelineBackpackViews071626",
+    "budget_max": 30,
     "budget_type": "Daily",
     "launch_date": "2026-07-16",
     "end_date": "",
@@ -134,7 +138,7 @@ Both images get hosted somewhere with a public link (Google Drive with sharing t
   },
   "adgroups": [
     {
-      "adgroup_name": "northbound0716gen",
+      "adgroup_name": "RidgelineBackpackBid12V1",
       "max_bid": 12,
       "context_hints": [
         "hiking backpack",
