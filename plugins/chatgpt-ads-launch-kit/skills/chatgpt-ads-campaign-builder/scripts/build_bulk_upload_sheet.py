@@ -17,7 +17,7 @@ Input JSON schema
 {
   "campaign": {
     "campaign_name": "brandtag0620",          # alphanumeric only, used as an ID
-    "budget_max": 17,
+    "budget_max": 30,                           # plain currency units, not micros; $25/day minimum on Daily budgets
     "budget_type": "Daily",                    # "Lifetime" or "Daily", Daily is the safer default
     "launch_date": "2026-06-20",
     "end_date": "",                             # optional, leave "" for an ongoing test
@@ -31,8 +31,8 @@ Input JSON schema
       "context_hints": ["frozen fruit snack", "healthy dessert", "..."],
       "ads": [
         {
-          "title": "...",       # max 24 chars
-          "copy": "...",        # max 48 chars
+          "title": "...",       # 16-24 chars recommended, 50 hard max
+          "copy": "...",        # 32-48 chars recommended, 100 hard max
           "link": "https://example.com/?utm_source=openai&utm_medium=cpc&...",
           "image_link": "https://drive.google.com/uc?export=view&id=..."
         }
@@ -68,6 +68,7 @@ import openpyxl
 
 ALLOWED_COUNTRIES = {"AU", "CA", "GB", "JP", "KR", "NZ", "US"}
 ID_PATTERN = re.compile(r"^[A-Za-z0-9]+$")
+DAILY_BUDGET_MINIMUM = 25
 
 
 def validate(spec):
@@ -80,6 +81,11 @@ def validate(spec):
         )
     if c["objective"] not in ("Views", "Clicks"):
         errors.append("objective must be 'Views' or 'Clicks'.")
+    if c["budget_type"] == "Daily" and c["budget_max"] < DAILY_BUDGET_MINIMUM:
+        errors.append(
+            f"budget_max {c['budget_max']} is below ChatGPT Ads' confirmed ${DAILY_BUDGET_MINIMUM}/day "
+            f"minimum for Daily budgets. Upload will fail with CampaignDailyBudgetMinimumValidationError."
+        )
     bad_countries = [x for x in c["target_countries"] if x not in ALLOWED_COUNTRIES]
     if bad_countries:
         errors.append(
@@ -100,10 +106,10 @@ def validate(spec):
             errors.append(f"Ad group '{ag['adgroup_name']}' has no ads.")
 
         for ad in ag.get("ads", []):
-            if len(ad["title"]) > 24:
-                errors.append(f"Ad title '{ad['title']}' is {len(ad['title'])} chars, max is 24.")
-            if len(ad["copy"]) > 48:
-                errors.append(f"Ad copy '{ad['copy']}' is {len(ad['copy'])} chars, max is 48.")
+            if len(ad["title"]) > 50:
+                errors.append(f"Ad title '{ad['title']}' is {len(ad['title'])} chars, hard max is 50.")
+            if len(ad["copy"]) > 100:
+                errors.append(f"Ad copy '{ad['copy']}' is {len(ad['copy'])} chars, hard max is 100.")
             image_link = ad.get("image_link", "")
             if not image_link or "REPLACE_WITH_FILE_ID" in image_link or "PLACEHOLDER" in image_link.upper():
                 errors.append(
