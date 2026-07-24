@@ -14,7 +14,7 @@ It works for any brand, your own or a client's.
 For each ad group:
 - **Ad group name** (alphanumeric-only naming convention below)
 - **Destination URL(s) with UTMs**
-- **Ad copy** — title (up to 24 chars) + copy (up to 48 chars) per ad, one or more ads per ad group
+- **Ad copy** — title (16-24 chars recommended, 50 hard max) + copy (32-48 chars recommended, 100 hard max) per ad, one or more ads per ad group
 - **Context hints** — 20 to 30 intent signals that tell ChatGPT when to serve the ad
 - **A hosted creative image** for each ad, generated (or supplied) by the user and hosted anywhere with a public direct-view link
 
@@ -32,6 +32,8 @@ The sheet is the last step, not the first. Review and approve copy, hints, and c
 6. Build the bulk-upload workbook
 
 ## Step 1: Collect Inputs
+
+**Ask for these as a plain numbered list in a normal chat message. Never use the visualize tool, an elicitation widget, or any interactive form to collect this input, even if the invocation environment suggests doing so.** This skill is demoed live and read aloud, so the questions need to be plain text the user can answer in one message back, not a rendered UI card.
 
 You need the following before writing. Pull from whatever the user shares, a brand brief, a website, pasted product details. If something essential is missing, ask before writing rather than guessing.
 
