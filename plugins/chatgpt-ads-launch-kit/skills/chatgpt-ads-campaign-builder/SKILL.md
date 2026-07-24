@@ -48,8 +48,8 @@ Also ask, as its own question, not buried inside the others:
 
 Campaign settings map directly to fields the bulk template requires. These are real platform constraints, not style choices:
 
-- **campaign_name**: alphanumeric characters only, no spaces, dashes, or punctuation. This is used as a literal ID across every tab in the sheet, so a stray dash breaks the whole workbook. Default pattern: a short brand tag + `MMDD` (e.g., `northbound0716`). If the user gives a name with punctuation in it, strip it down before using it and say what it was changed to.
-- **budget_max**: a number, the spend amount in the account's currency.
+- **campaign_name**: alphanumeric characters only, no spaces, dashes, or punctuation. This is used as a literal ID across every tab in the sheet, so a stray dash breaks the whole workbook. Default pattern: **Product/Category + Objective + Date**, each segment capitalized and run together with no separators since punctuation isn't allowed (date as `MMDDYY`, always 6 digits so segment lengths stay consistent). Example: a Ridgeline Backpack campaign, Clicks objective, launched 7/22/26 becomes `RidgelineBackpackClicks072226`. If the user gives a name with punctuation or spaces in it, strip it into this same capitalized run-together format and say what it was changed to.
+- **budget_max**: a number, the spend amount in the account's currency, no unit conversion needed (plain dollars, not micros). ChatGPT Ads enforces a confirmed $25/day minimum on Daily budgets, if `budget_type` is Daily, keep `budget_max` at $25 or above or the upload fails with `CampaignDailyBudgetMinimumValidationError`. Default to $30 if the user hasn't specified an amount, to clear that floor with a small margin.
 - **budget_type**: `Lifetime` or `Daily`. Default to `Daily` unless told otherwise, it's the safer starting point for a first test since it caps what can go out in a single day rather than committing the full budget up front.
 - **launch_date** / **end_date**: dates. Ask, or default launch_date to today and leave end_date blank for an ongoing test.
 - **objective**: `Views` or `Clicks`. This decides whether the ad group bids on CPM or CPC. Ask which the user wants. One thing worth knowing: the bulk template this skill is built from is literally named a CPM template, and its own field description notes clicks campaigns are "rolling out in beta." That's not a reason to avoid offering Clicks, ChatGPT Ads does list it as a real, selectable objective, but confirm in the ChatGPT Ads dashboard that Clicks is live for the account before building a CPC campaign around it. Default to `Views` if that hasn't been confirmed either way.
@@ -60,7 +60,7 @@ Campaign settings map directly to fields the bulk template requires. These are r
 
 Most first tests start with a single ad group. Add more only when there's a clear reason (distinct products, audiences, or landing pages). Each ad group maps to one landing page and one set of context hints.
 
-**adgroup_name** follows the same alphanumeric-only rule as campaign_name, since it's also a literal ID. Default pattern: `campaign_name` + a short segment tag (e.g., `northbound0716gen`, `northbound0716frozen`).
+**adgroup_name** follows the same alphanumeric-only rule as campaign_name, since it's also a literal ID. Default pattern: **Product/Category + Bid + Creative Version**, same capitalized run-together format, bid written as the word `Bid` plus the number (no dollar sign, since punctuation isn't allowed) and version as `V1`, `V2`, etc. Example: a Ridgeline Backpack ad group at a $4 bid, first creative version, becomes `RidgelineBackpackBid4V1`.
 
 If a name comes in with punctuation in it, strip it down and say what it was changed to.
 
@@ -82,7 +82,7 @@ Each ad in an ad group gets its own `link`, differing only in `utm_content`.
 
 Read `references/copywriting-guide.md` for the full voice approach and prompt structure. The short version:
 
-- **One format, not two.** The bulk template only has a single length: title up to 24 characters (title case), copy up to 48 characters (sentence case). Write straight to those caps, don't draft long copy and cut it down, since the platform has no field for a longer version.
+- **One format, not two.** Titles run 16 to 24 characters recommended (50 hard max), copy runs 32 to 48 characters recommended (100 hard max), per OpenAI's own bulk upload schema checklist. Write to the recommended range by default, it reads best in-line with a chat response, going past it isn't a rejected file, just a weaker ad.
 - Always show the character count in parentheses after each field so it's easy to verify at a glance.
 - Write conversationally. These ads appear inside a chat where someone is already problem-solving, so copy that sounds like a helpful answer beats hard-sell ad-speak.
 - Match the brand's own voice. If approved copy or brand guidelines exist, draw from that language instead of inventing claims.
